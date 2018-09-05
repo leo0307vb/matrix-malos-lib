@@ -23,8 +23,8 @@ find_library(ZeroMQ_LIBRARY
         PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
         )
 
-message(STATUS "ZMQ found => " "${ZMQ_LIB}")
-message(STATUS "ZMQ INCLUDE => " "${ZMQ_INCLUDE_DIR}")
+message(STATUS "ZMQ found => " "${ZeroMQ_LIBRARY}")
+message(STATUS "ZMQ INCLUDE => " "${ZeroMQ_INCLUDE_DIR}")
 
 set(matrix_malos_zmq_src
   zmq_push.h
