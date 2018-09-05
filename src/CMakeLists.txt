@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-
+project(matrix-malos-lib C CXX)
 add_definitions(-std=c++11)
 
 include (../cmake/FatalWarnings.cmake)
@@ -36,6 +36,8 @@ add_library(matrix_malos SHARED ${matrix_malos_src})
   target_link_libraries(matrix_malos matrix_malos_zmq)
   target_link_libraries(matrix_malos matrixio_protos)
   target_link_libraries(matrix_malos ${CMAKE_THREAD_LIBS_INIT})
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR} ${ZMQ_INCLUDE_DIR})
 
 # Binary to be installed.
 install(TARGETS matrix_malos_zmq DESTINATION lib)
