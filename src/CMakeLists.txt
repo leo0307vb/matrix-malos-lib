@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(matrix-malos-lib C CXX)
+project(matrix_malos_zmq C CXX)
 add_definitions(-std=c++11)
 
 include (../cmake/FatalWarnings.cmake)
@@ -10,7 +10,18 @@ find_package(Threads REQUIRED)
 
 # This won't find ZQM in custom locations.
 # FIXME(nelson.castillo): Improve.
-FIND_LIBRARY(ZMQ_LIB NAMES zmq)
+# FIND_LIBRARY(ZMQ_LIB NAMES zmq)
+## use the hint from above to find where 'zmq.hpp' is located
+find_path(ZeroMQ_INCLUDE_DIR
+        NAMES zmq.hpp
+        PATHS ${PC_ZeroMQ_INCLUDE_DIRS}
+        )
+
+## use the hint from about to find the location of libzmq
+find_library(ZeroMQ_LIBRARY
+        NAMES zmq
+        PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
+        )
 
 message(STATUS "ZMQ found => " "${ZMQ_LIB}")
 message(STATUS "ZMQ INCLUDE => " "${ZMQ_INCLUDE_DIR}")
