@@ -12,17 +12,18 @@ find_package(Threads REQUIRED)
 # FIXME(nelson.castillo): Improve.
 # FIND_LIBRARY(ZMQ_LIB NAMES zmq)
 ## use the hint from above to find where 'zmq.hpp' is located
-find_path(ZeroMQ_INCLUDE_DIR
+FIND_PATH(ZeroMQ_INCLUDE_DIR
         NAMES zmq.hpp
         PATHS ${PC_ZeroMQ_INCLUDE_DIRS}
         )
 
 ## use the hint from about to find the location of libzmq
-find_library(ZeroMQ_LIBRARY
+FIND_LIBRARY(ZeroMQ_LIBRARY
         NAMES zmq
         PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
         )
 
+message(STATUS "PC_ZeroMQ_LIBRARY_DIRS => " "${PC_ZeroMQ_LIBRARY_DIRS}")
 message(STATUS "ZMQ found => " "${ZeroMQ_LIBRARY}")
 message(STATUS "ZMQ INCLUDE => " "${ZeroMQ_INCLUDE_DIR}")
 
