@@ -10,7 +10,7 @@ find_package(Threads REQUIRED)
 
 # This won't find ZQM in custom locations.
 # FIXME(nelson.castillo): Improve.
-FIND_LIBRARY(ZMQ_LIB NAMES libzmq)
+FIND_LIBRARY(ZMQ_LIB NAMES libzmq-v140-mt-4_2_0)
 ## use the hint from above to find where 'zmq.hpp' is located
 
 # SET(CMAKE_FIND_LIBRARY_PREFIXES "")
