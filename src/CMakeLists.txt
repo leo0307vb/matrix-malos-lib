@@ -12,34 +12,41 @@ find_package(Threads REQUIRED)
 # FIXME(nelson.castillo): Improve.
 # FIND_LIBRARY(ZMQ_LIB NAMES zmq)
 ## use the hint from above to find where 'zmq.hpp' is located
-FIND_PATH(ZeroMQ_INCLUDE_DIR
-        NAMES zmq.hpp
-        HINTS "C:/Program Files (x86)/ZeroMQ/include"
-        )
 
-## use the hint from about to find the location of libzmq
-FIND_LIBRARY(ZeroMQ_LIBRARY
-        NAMES zmq
-        PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
-        )
+SET(CMAKE_FIND_LIBRARY_PREFIXES "")
+SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
+
+# FIND_PATH(ZeroMQ_INCLUDE_DIR
+#         NAMES zmq.hpp
+#         HINTS "C:/Program Files (x86)/ZeroMQ/include"
+#         )
+
+find_library(ZeroMQ_LIBRARY
+  NAMES libzmq-v140-mt-4_2_0
+  PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
+)
+# ## use the hint from about to find the location of libzmq
+# FIND_LIBRARY(ZeroMQ_LIBRARY
+#         NAMES zmq
+#         PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
+#         )
 
 # find_library(CURL_LIBRARY
 #     NAMES curl curllib libcurl_imp curllib_static
 #     HINTS "${CMAKE_PREFIX_PATH}/curl/lib"
 # )
 
-
 # libzmq autotools install: fallback to pkg-config
-if(NOT ZeroMQ_FOUND)
-    message(STATUS "CMake libzmq package not found, trying again with pkg-config (normal install of zeromq)")
-    list (APPEND CMAKE_MODULE_PATH "C:\Program Files (x86)\ZeroMQ\lib\pkgconfig")
-    find_package(ZeroMQ REQUIRED)
-endif()
+# if(NOT ZeroMQ_FOUND)
+#     message(STATUS "CMake libzmq package not found, trying again with pkg-config (normal install of zeromq)")
+#     list (APPEND CMAKE_MODULE_PATH "C:\Program Files (x86)\ZeroMQ\lib\pkgconfig")
+#     find_package(ZeroMQ REQUIRED)
+# endif()
 
-# TODO "REQUIRED" above should already cause a fatal failure if not found, but this doesn't seem to work
-if(NOT ZeroMQ_FOUND)
-    message(FATAL_ERROR "ZeroMQ was not found, neither as a CMake package nor via pkg-config")
-endif()
+# # TODO "REQUIRED" above should already cause a fatal failure if not found, but this doesn't seem to work
+# if(NOT ZeroMQ_FOUND)
+#     message(FATAL_ERROR "ZeroMQ was not found, neither as a CMake package nor via pkg-config")
+# endif()
 
 message(STATUS "PC_ZeroMQ_INCLUDE_DIRS => " "${PC_ZeroMQ_INCLUDE_DIRS}")
 message(STATUS "PC_ZeroMQ_LIBRARY_DIRS => " "${PC_ZeroMQ_LIBRARY_DIRS}")
