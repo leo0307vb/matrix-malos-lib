@@ -26,8 +26,8 @@ find_path(ZeroMQ_INCLUDE_DIR
         PATHS ${PC_ZeroMQ_INCLUDE_DIRS}
 )
 
-find_library(ZeroMQ_LIBRARY
-  NAMES libzmq-v140-mt-4_2_0
+find_library(ZMQ_LIB
+  NAMES zmq libzmq-v140-mt-4_2_0
   PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
 )
 # ## use the hint from about to find the location of libzmq
@@ -56,7 +56,7 @@ find_library(ZeroMQ_LIBRARY
 message(STATUS "PC_ZeroMQ_INCLUDE_DIRS => " "${PC_ZeroMQ_INCLUDE_DIRS}")
 message(STATUS "PC_ZeroMQ_LIBRARY_DIRS => " "${PC_ZeroMQ_LIBRARY_DIRS}")
 message(STATUS "ZMQ found => " "${ZeroMQ_LIBRARY}")
-message(STATUS "ZMQ INCLUDE => " "${ZeroMQ_INCLUDE_DIR}")
+message(STATUS "ZMQ INCLUDE => " "${ZMQ_INCLUDE_DIR}")
 
 set(matrix_malos_zmq_src
   zmq_push.h
