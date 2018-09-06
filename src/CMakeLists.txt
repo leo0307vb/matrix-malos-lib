@@ -10,23 +10,21 @@ find_package(Threads REQUIRED)
 
 # This won't find ZQM in custom locations.
 # FIXME(nelson.castillo): Improve.
-SET(CMAKE_FIND_LIBRARY_PREFIXES "")
-SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
-FIND_LIBRARY(ZMQ_LIB 
-            NAMES libzmq-v140-mt-4_2_0
-            PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
-            )
+# FIND_LIBRARY(ZMQ_LIB NAMES zmq)
 ## use the hint from above to find where 'zmq.hpp' is located
 
+SET(CMAKE_FIND_LIBRARY_PREFIXES "")
+SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
 
 # FIND_PATH(ZeroMQ_INCLUDE_DIR
 #         NAMES zmq.hpp
 #         HINTS "C:/Program Files (x86)/ZeroMQ/include"
 #         )
 
-# find_library(ZeroMQ_LIBRARY
-#   NAMES libzmq-v140-mt-4_2_0
-# )
+find_library(ZeroMQ_LIBRARY
+  NAMES libzmq-v140-mt-4_2_0
+  PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
+)
 # ## use the hint from about to find the location of libzmq
 # FIND_LIBRARY(ZeroMQ_LIBRARY
 #         NAMES zmq
