@@ -14,7 +14,7 @@ find_package(Threads REQUIRED)
 ## use the hint from above to find where 'zmq.hpp' is located
 FIND_PATH(ZeroMQ_INCLUDE_DIR
         NAMES zmq.hpp
-        PATHS ${PC_ZeroMQ_INCLUDE_DIRS}
+        HINTS "C:\Program Files (x86)\ZeroMQ\include"
         )
 
 ## use the hint from about to find the location of libzmq
@@ -22,6 +22,11 @@ FIND_LIBRARY(ZeroMQ_LIBRARY
         NAMES zmq
         PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
         )
+
+# find_library(CURL_LIBRARY
+#     NAMES curl curllib libcurl_imp curllib_static
+#     HINTS "${CMAKE_PREFIX_PATH}/curl/lib"
+# )
 
 message(STATUS "PC_ZeroMQ_INCLUDE_DIRS => " "${PC_ZeroMQ_INCLUDE_DIRS}")
 message(STATUS "PC_ZeroMQ_LIBRARY_DIRS => " "${PC_ZeroMQ_LIBRARY_DIRS}")
