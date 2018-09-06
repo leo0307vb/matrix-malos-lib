@@ -11,7 +11,9 @@ find_package(Threads REQUIRED)
 # This won't find ZQM in custom locations.
 # FIXME(nelson.castillo): Improve.
 FIND_LIBRARY(ZMQ_LIB NAMES zmq)
-FIND_PATH(ZMQ_LIB NAMES zmq.hpp)
+FIND_PATH(ZMQ_INCLUDE_DIR NAMES zmq.hpp)
+
+FIND_LIBRARY(MATRIX_PROTOS_LIB NAMES matrixio_protos)
 
 message(STATUS "ZMQ found => " "${ZMQ_LIB}")
 message(STATUS "ZMQ_INCLUDE found => " "${ZMQ_INCLUDE_DIR}")
@@ -36,10 +38,11 @@ set(matrix_malos_src
 add_library(matrix_malos SHARED ${matrix_malos_src})
   set_property(TARGET matrix_malos PROPERTY CXX_STANDARD 11)
   target_link_libraries(matrix_malos matrix_malos_zmq)
-  target_link_libraries(matrix_malos matrixio_protos)
+  target_link_libraries(matrix_malos ${MATRIX_PROTOS_LIB})
   target_link_libraries(matrix_malos ${CMAKE_THREAD_LIBS_INIT})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${ZMQ_INCLUDE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR} ${MATRIX_PROTOS_INCLUDE_DIRS})
 
 # Binary to be installed.
 install(TARGETS matrix_malos_zmq DESTINATION lib)
@@ -54,4 +57,8 @@ set (matrix_malos_headers
 
 install (FILES ${matrix_malos_headers} DESTINATION include/matrix_malos)
 install (FILES third_party/zmq.hpp  DESTINATION include/matrix_malos/third_party)
+
+
+
+
 
