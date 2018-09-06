@@ -28,6 +28,19 @@ FIND_LIBRARY(ZeroMQ_LIBRARY
 #     HINTS "${CMAKE_PREFIX_PATH}/curl/lib"
 # )
 
+
+# libzmq autotools install: fallback to pkg-config
+if(NOT ZeroMQ_FOUND)
+    message(STATUS "CMake libzmq package not found, trying again with pkg-config (normal install of zeromq)")
+    list (APPEND CMAKE_MODULE_PATH "C:\Program Files (x86)\ZeroMQ\lib\pkgconfig")
+    find_package(ZeroMQ REQUIRED)
+endif()
+
+# TODO "REQUIRED" above should already cause a fatal failure if not found, but this doesn't seem to work
+if(NOT ZeroMQ_FOUND)
+    message(FATAL_ERROR "ZeroMQ was not found, neither as a CMake package nor via pkg-config")
+endif()
+
 message(STATUS "PC_ZeroMQ_INCLUDE_DIRS => " "${PC_ZeroMQ_INCLUDE_DIRS}")
 message(STATUS "PC_ZeroMQ_LIBRARY_DIRS => " "${PC_ZeroMQ_LIBRARY_DIRS}")
 message(STATUS "ZMQ found => " "${ZeroMQ_LIBRARY}")
