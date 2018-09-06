@@ -23,6 +23,7 @@ FIND_LIBRARY(ZeroMQ_LIBRARY
         PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
         )
 
+message(STATUS "PC_ZeroMQ_INCLUDE_DIRS => " "${PC_ZeroMQ_INCLUDE_DIRS}")
 message(STATUS "PC_ZeroMQ_LIBRARY_DIRS => " "${PC_ZeroMQ_LIBRARY_DIRS}")
 message(STATUS "ZMQ found => " "${ZeroMQ_LIBRARY}")
 message(STATUS "ZMQ INCLUDE => " "${ZeroMQ_INCLUDE_DIR}")
