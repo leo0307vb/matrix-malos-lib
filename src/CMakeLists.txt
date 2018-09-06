@@ -23,7 +23,6 @@ find_package(Threads REQUIRED)
 
 find_library(ZeroMQ_LIBRARY
   NAMES libzmq-v140-mt-4_2_0
-  PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
 )
 # ## use the hint from about to find the location of libzmq
 # FIND_LIBRARY(ZeroMQ_LIBRARY
