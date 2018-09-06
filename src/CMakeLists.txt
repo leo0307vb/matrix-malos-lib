@@ -21,9 +21,9 @@ SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
 #         HINTS "C:/Program Files (x86)/ZeroMQ/include"
 #         )
 
-find_library(ZeroMQ_INCLUDE_DIR
-  NAMES zmq.hpp
-  PATHS ${PC_ZeroMQ_INCLUDE_DIRS}
+find_path(ZeroMQ_INCLUDE_DIR
+        NAMES zmq.hpp
+        PATHS ${PC_ZeroMQ_INCLUDE_DIRS}
 )
 
 find_library(ZeroMQ_LIBRARY
