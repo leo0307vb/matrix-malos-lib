@@ -13,8 +13,8 @@ find_package(Threads REQUIRED)
 # FIND_LIBRARY(ZMQ_LIB NAMES zmq)
 ## use the hint from above to find where 'zmq.hpp' is located
 
-SET(CMAKE_FIND_LIBRARY_PREFIXES "")
-SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
+# SET(CMAKE_FIND_LIBRARY_PREFIXES "")
+# SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
 
 # FIND_PATH(ZeroMQ_INCLUDE_DIR
 #         NAMES zmq.hpp
