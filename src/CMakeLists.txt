@@ -42,7 +42,7 @@ add_library(matrix_malos SHARED ${matrix_malos_src})
   target_link_libraries(matrix_malos ${CMAKE_THREAD_LIBS_INIT})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${ZMQ_INCLUDE_DIR})
-include_directories(${CMAKE_CURRENT_BINARY_DIR} ${MATRIX_PROTOS_INCLUDE_DIRS})
+include_directories(${CMAKE_CURRENT_BINARY_DIR} ${MATRIX_PROTOS_INCLUDE_DIR})
 
 # Binary to be installed.
 install(TARGETS matrix_malos_zmq DESTINATION lib)
