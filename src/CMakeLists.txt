@@ -14,7 +14,7 @@ find_package(Threads REQUIRED)
 ## use the hint from above to find where 'zmq.hpp' is located
 FIND_PATH(ZeroMQ_INCLUDE_DIR
         NAMES zmq.hpp
-        HINTS C:\Program Files (x86)\ZeroMQ\include
+        HINTS "C:/Program Files (x86)/ZeroMQ/include"
         )
 
 ## use the hint from about to find the location of libzmq
