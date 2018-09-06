@@ -12,7 +12,10 @@ find_package(Threads REQUIRED)
 # FIXME(nelson.castillo): Improve.
 SET(CMAKE_FIND_LIBRARY_PREFIXES "")
 SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
-FIND_LIBRARY(ZMQ_LIB NAMES libzmq-v140-mt-4_2_0)
+FIND_LIBRARY(ZMQ_LIB 
+            NAMES libzmq-v140-mt-4_2_0
+            PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
+            )
 ## use the hint from above to find where 'zmq.hpp' is located
 
 
