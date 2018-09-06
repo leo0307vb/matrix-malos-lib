@@ -22,7 +22,7 @@ SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
 #         )
 
 find_path(ZMQ_INCLUDE_DIR
-        NAMES zmq.hpp
+        NAMES zmq zmq_utils
         PATHS ${PC_ZeroMQ_INCLUDE_DIRS}
 )
 
