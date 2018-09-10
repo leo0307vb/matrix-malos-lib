@@ -1,3 +1,4 @@
+project(matrix_malos)
 cmake_minimum_required(VERSION 2.8)
 
 add_definitions(-std=c++11)
@@ -17,6 +18,8 @@ FIND_LIBRARY(MATRIX_PROTOS_LIB NAMES matrixio_protos)
 
 message(STATUS "ZMQ found => " "${ZMQ_LIB}")
 message(STATUS "ZMQ_INCLUDE found => " "${ZMQ_INCLUDE_DIR}")
+message(STATUS "MATRIX_PROTOS_LIB found => " "${MATRIX_PROTOS_LIB}")
+message(STATUS "MATRIX_PROTOS_INCLUDE_DIR found => " "${DMATRIX_PROTOS_INCLUDE_DIR}")
 
 set(matrix_malos_zmq_src
   zmq_push.h
@@ -40,9 +43,9 @@ add_library(matrix_malos SHARED ${matrix_malos_src})
   target_link_libraries(matrix_malos matrix_malos_zmq)
   target_link_libraries(matrix_malos ${MATRIX_PROTOS_LIB})
   target_link_libraries(matrix_malos ${CMAKE_THREAD_LIBS_INIT})
-  
-  target_include_directories(matrix_malos PUBLIC ${ZMQ_INCLUDE_DIR})
-  target_include_directories(matrix_malos PUBLIC ${MATRIX_PROTOS_INCLUDE_DIR})
+
+include_directories(${ZMQ_INCLUDE_DIR})
+include_directories(${MATRIX_PROTOS_INCLUDE_DIR})
 
 # Binary to be installed.
 install(TARGETS matrix_malos_zmq DESTINATION lib)
