@@ -20,6 +20,9 @@ message(STATUS "ZMQ found => " "${ZMQ_LIB}")
 message(STATUS "ZMQ_INCLUDE found => " "${ZMQ_INCLUDE_DIR}")
 message(STATUS "MATRIX_PROTOS_LIB found => " "${MATRIX_PROTOS_LIB}")
 message(STATUS "MATRIX_PROTOS_INCLUDE_DIR found => " "${DMATRIX_PROTOS_INCLUDE_DIR}")
+message(STATUS "Protobuf LIB found => " "${PROTOBUF_LIBRARY}")
+message(STATUS "Protobuf INCLUDE found => " "${PROTOBUF_INCLUDE_DIR}")
+
 
 set(matrix_malos_zmq_src
   zmq_push.h
@@ -46,6 +49,7 @@ add_library(matrix_malos SHARED ${matrix_malos_src})
 
 include_directories(${ZMQ_INCLUDE_DIR})
 include_directories(${MATRIX_PROTOS_INCLUDE_DIR})
+include_directories(${PROTOBUF_INCLUDE_DIR})
 
 # Binary to be installed.
 install(TARGETS matrix_malos_zmq DESTINATION lib)
